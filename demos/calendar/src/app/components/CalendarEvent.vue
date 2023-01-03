@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     getEventBackgroundColor() {
-      const colors = ["#D7E9B9", "#FFFBAC", "#FFD495", "#FAAB78"];
+      const colors = ["#FF9999", "#85D6FF", "#99FF99"];
       let randomColor = colors[Math.floor(Math.random() * colors.length)];
       return `background-color: ${randomColor}`;
     },
