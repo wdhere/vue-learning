@@ -4,7 +4,7 @@ import cart from "./modules/cart";
 
 export default createStore({
   modules: {
-    product,
     cart,
+    product,
   },
 });

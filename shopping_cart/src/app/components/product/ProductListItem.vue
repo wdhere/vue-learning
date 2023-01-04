@@ -3,6 +3,7 @@
     <h2 class="has-text-weight-bold">
       {{ productItem.title }}
       <span
+        @click="addCartItem(productItem)"
         class="tag 
                 is-primary
                 is-pulled-right
@@ -21,9 +22,14 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "ProductListItem",
   props: ["productItem"],
+  methods: {
+    ...mapActions(["addCartItem"]),
+  },
 };
 </script>
 
