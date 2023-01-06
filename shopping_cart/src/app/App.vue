@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import CartList from './components/cart/CartList';
-import ProductList from './components/product/ProductList';
+import CartList from "./components/cart/CartList";
+import ProductList from "./components/product/ProductList";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     CartList,
-    ProductList
-  }
+    ProductList,
+  },
 };
 </script>
 
