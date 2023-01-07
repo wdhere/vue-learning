@@ -60,6 +60,13 @@ const InputForm = {
       saveStatus: "READY",
     };
   },
+  created() {
+    this.loading = true;
+    apiClient.loadItems().then((items) => {
+      this.items = items;
+      this.loading = false;
+    });
+  },
   computed: {
     isNewItemInputLimitExceeded() {
       return this.fields.newItem.length >= 20;
