@@ -82,11 +82,23 @@ const InputForm = {
       this.fieldErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldErrors).length) return;
 
-      this.items.push(this.fields.newItem);
-      this.fields.newItem = "";
-      this.fields.email = "";
-      this.fields.urgency = "";
-      this.fields.termsAndConditions = false;
+      const items = [...this.items, this.fields.newItem];
+
+      this.saveStatus = "SAVING";
+
+      apiClient
+        .saveItems(items)
+        .then(() => {
+          this.items = items;
+          this.fields.newItem = "";
+          this.fields.email = "";
+          this.fields.urgency = "";
+          this.fields.termsAndConditions = false;
+        })
+        .catch((err) => {
+          console.log(err);
+          this.saveStatus = "ERROR";
+        });
     },
     validateForm(fields) {
       const errors = {};
