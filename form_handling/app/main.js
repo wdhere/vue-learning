@@ -47,19 +47,12 @@ const InputForm = {
     </div>`,
   data() {
     return {
-      fields: {
-        newItem: "",
-        email: "",
-        urgency: "",
-        termsAndConditions: false,
-      },
       fieldErrors: {
         newItem: undefined,
         email: undefined,
         urgency: undefined,
         termsAndConditions: undefined,
       },
-      items: [],
       loading: false,
       saveStatus: "READY",
     };
@@ -124,31 +117,6 @@ const InputForm = {
       return re.test(email);
     },
   },
-};
-
-let apiClient = {
-  loadItems: function () {
-    return {
-      then: function (cb) {
-        setTimeout(() => {
-          cb(JSON.parse(localStorage.items || "[]"));
-        }, 1000);
-      },
-    };
-  },
-  saveItems: function (items) {
-    const success = !!(this.count++ % 2);
-
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (!success) return reject({ succeess });
-
-        localStorage.items = JSON.stringify(items);
-        return resolve({ success });
-      }, 1000);
-    });
-  },
-  count: 1,
 };
 
 Vue.createApp({
