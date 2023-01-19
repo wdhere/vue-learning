@@ -32,7 +32,34 @@ const mutations = {
   },
 };
 
-const actions = {};
+const actions = {
+  loadItems(context, payload) {
+    return new Promise(
+      (resolve, reject) => {
+        apiClient.loadItems().then((items) => {
+          context.commit("UPDATE_ITEMS", items);
+        });
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  },
+  saveItems(context, payload) {
+    return new Promise(
+      (resolve, reject) => {
+        const items = payload;
+        apiClient.saveItems(payload).then(() => {
+          context.commit("UPDATE_ITEMS", items);
+          context.commit("CLEAR_FIELDS");
+        });
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  },
+};
 
 const getters = {
   newItem: (state) => state.fields.newItem,
@@ -52,7 +79,7 @@ window.store = Vuex.createStore({
 });
 
 let apiClient = {
-  loadItem: function () {
+  loadItems: function () {
     return {
       then: function (cb) {
         setTimeout(() => {
