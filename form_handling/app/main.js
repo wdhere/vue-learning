@@ -4,19 +4,19 @@ const InputForm = {
       <form @submit="submitForm" class="ui form">
         <div class="field">
           <label>New Item</label>
-          <input v-model="fields.newItem" type="text" placeholder="Add an item!" />
-          <span style="float: right">{{ fields.newItem.length }}/20</span>
+          <input :value="newItem" @input="onInputChange" name="NEW_ITEM" type="text" placeholder="Add an item!" />
+          <span style="float: right">{{ newItemLength }}/20</span>
           <span style="color: red">{{ fieldErrors.newItem }}</span>
           <span v-if="isNewItemInputLimitExceeded" style="color: red; display: block"> Must be under twenty characters </span>
         </div>
         <div class="field">
           <label>Email</label>
-          <input v-model="fields.email" type="text" placeholder="What's your email?" />
+          <input :value="email" @input="onInputChange" name="EMAIL" type="text" placeholder="What's your email?" />
           <span style="color: red">{{ fieldErrors.email }}</span>
         </div>
         <div class="field">
           <label>Urgency</label>
-          <select v-model="fields.urgency" class="ui fluid search dropdown">
+          <select :value="urgency" @change="onInputChange" name="URGENCY" class="ui fluid search dropdown">
             <option disabled value="">Please select one</option>
             <option>Nonessential</option>
             <option>Moderate</option>
@@ -27,7 +27,7 @@ const InputForm = {
         </div>
         <div class="field">
           <div class="ui checkbox">
-            <input v-model="fields.termsAndConditions" type="checkbox" />
+            <input :checked="termsAndConditions" @change="onInputChange" name="TERMS_AND_CONDITIONS" type="checkbox" />
             <label>I accept the terms and conditions</label> 
             <span style="color: red">{{ fieldErrors.termsAndConditions }}</span>
           </div> 
@@ -66,10 +66,22 @@ const InputForm = {
   },
   computed: Vuex.mapGetters({
     newItem: "newItem",
+    newItemLength: "newItemLength",
+    isNewItemInputLimitExceeded: "isNewItemInputLimitExceeded",
+    email: "email",
+    urgency: "urgency",
+    isNotUrgent: "isNotUrgent",
+    termsAndConditions: "termsAndConditions",
+    items: "items",
   }),
   methods: {
     onInputChange(evt) {
-      this.$store.commit("UPDATE_INPUT", evt.target.value);
+      const element = evt.target;
+      const value =
+        element.name === "TERMS_AND_CONDITIONS"
+          ? element.checked
+          : element.value;
+      this.$store.commit(`UPDATE_${element.name}`, value);
     },
     submitForm(evt) {
       evt.preventDefault();
