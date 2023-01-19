@@ -8,7 +8,29 @@ const state = {
   items: [],
 };
 
-const mutations = {};
+const mutations = {
+  UPDATE_NEW_ITEM(state, payload) {
+    state.fields.newItem = payload;
+  },
+  UPDATE_EMAIL(state, payload) {
+    state.fields.email = payload;
+  },
+  UPDATE_URGENCY(state, payload) {
+    state.fields.urgency = payload;
+  },
+  UPDATE_TERMS_AND_CONDITIONS(state, payload) {
+    state.fields.termsAndConditions = payload;
+  },
+  UPDATE_ITEMS(state, payload) {
+    state.items = payload;
+  },
+  CLEAR_FIELDS() {
+    state.fields.newItem = "";
+    state.fields.email = "";
+    state.fields.urgency = "";
+    state.fields.termsAndConditions = "";
+  },
+};
 
 const actions = {};
 

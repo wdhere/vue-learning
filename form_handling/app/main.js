@@ -64,15 +64,13 @@ const InputForm = {
       this.loading = false;
     });
   },
-  computed: {
-    isNewItemInputLimitExceeded() {
-      return this.fields.newItem.length >= 20;
-    },
-    isNotUrgent() {
-      return this.fields.urgency === "Nonessential";
-    },
-  },
+  computed: Vuex.mapGetters({
+    newItem: "newItem",
+  }),
   methods: {
+    onInputChange(evt) {
+      this.$store.commit("UPDATE_INPUT", evt.target.value);
+    },
     submitForm(evt) {
       evt.preventDefault();
 
