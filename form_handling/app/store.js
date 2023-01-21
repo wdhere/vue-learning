@@ -28,36 +28,38 @@ const mutations = {
     state.fields.newItem = "";
     state.fields.email = "";
     state.fields.urgency = "";
-    state.fields.termsAndConditions = "";
+    state.fields.termsAndConditions = false;
   },
 };
 
 const actions = {
   loadItems(context, payload) {
-    return new Promise(
-      (resolve, reject) => {
-        apiClient.loadItems().then((items) => {
+    return new Promise((resolve, reject) => {
+      apiClient.loadItems().then(
+        (items) => {
           context.commit("UPDATE_ITEMS", items);
-        });
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+          resolve(items);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   },
   saveItems(context, payload) {
-    return new Promise(
-      (resolve, reject) => {
-        const items = payload;
-        apiClient.saveItems(payload).then(() => {
+    return new Promise((resolve, reject) => {
+      const items = payload;
+      apiClient.saveItems(payload).then(
+        (response) => {
           context.commit("UPDATE_ITEMS", items);
           context.commit("CLEAR_FIELDS");
-        });
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   },
 };
 
@@ -65,6 +67,7 @@ const getters = {
   newItem: (state) => state.fields.newItem,
   newItemLength: (state) => state.fields.newItem.length,
   isNewItemInputLimitExceeded: (state) => state.fields.newItem.length >= 20,
+  email: (state) => state.fields.email,
   urgency: (state) => state.fields.urgency,
   isNotUrgent: (state) => state.fields.urgency === "Nonessential",
   termsAndConditions: (state) => state.fields.termsAndConditions,
