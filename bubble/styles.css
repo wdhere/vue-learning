@@ -33,6 +33,6 @@ p {
 @media (orientation: portrait) {
   p {
     bottom: 15vh;
-    font-size: 5vw;
+    font-size: 3vw;
   }
 }
