@@ -35,4 +35,7 @@ p {
     bottom: 15vh;
     font-size: 4vw;
   }
+  canvas {
+    margin-top: 50px;
+  }
 }
