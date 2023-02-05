@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  width: 60vw;
+  position: fixed;
+  bottom: 10vh;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  line-height: 160%;
+}
+
+@media (orientation: landscape) {
+  p {
+    bottom: 7vh;
+  }
+}
+
+@media (orientation: portrait) {
+  p {
+    bottom: 15vh;
+  }
+}
