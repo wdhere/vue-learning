@@ -5,7 +5,7 @@ let sketch = function (p) {
   const height = window.innerHeight - 10;
   // alert("width: " + window.innerWidth + " height: " + window.innerHeight);
   const radiusBase = width > height ? width * 0.15 : height * 0.15;
-  const part = radiusBase / 3;
+  const part = radiusBase / 2.8;
   const speed = radiusBase * 0.003;
   let radius = radiusBase;
   let acc = true;
@@ -34,7 +34,7 @@ let sketch = function (p) {
     for (let angle = 0; angle < 360; angle += 3) {
       let radian = p.radians(angle);
       let radiusN =
-        radius + p.map(getNoise(radian, 0.25), 0, 1, -0.8 * part, 0.8 * part);
+        radius + p.map(getNoise(radian, 0.25), 0, 1, -0.85 * part, 0.85 * part);
       p.vertex(radiusN * p.cos(radian), radiusN * p.sin(radian));
     }
     p.endShape(p.CLOSE);

@@ -32,11 +32,11 @@ p {
 
 @media (orientation: portrait) {
   p {
-    bottom: 12vh;
+    bottom: 10vh;
     font-size: 4vw;
   }
   canvas {
-    margin-top: 50px;
-    margin-bottom: 70px;
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
 }
