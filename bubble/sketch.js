@@ -34,7 +34,7 @@ let sketch = function (p) {
     for (let angle = 0; angle < 360; angle += 3) {
       let radian = p.radians(angle);
       let radiusN =
-        radius + p.map(getNoise(radian, 0.3), 0, 1, -0.85 * part, 0.85 * part);
+        radius + p.map(getNoise(radian, 0.25), 0, 1, -0.85 * part, 0.85 * part);
       p.vertex(radiusN * p.cos(radian), radiusN * p.sin(radian));
     }
     p.endShape(p.CLOSE);
