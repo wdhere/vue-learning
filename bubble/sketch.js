@@ -3,7 +3,7 @@ let sketch = function (p) {
   let oy = p.random(10000);
   const width = window.innerWidth - 10;
   const height = window.innerHeight - 10;
-  alert("width: " + window.innerWidth + " height: " + window.innerHeight);
+  // alert("width: " + window.innerWidth + " height: " + window.innerHeight);
   const radiusBase = width > height ? width * 0.15 : height * 0.15;
   const part = radiusBase / 3;
   const speed = radiusBase * 0.003;
