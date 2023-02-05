@@ -6,7 +6,7 @@ let sketch = function (p) {
   // alert("width: " + window.innerWidth + " height: " + window.innerHeight);
   const radiusBase = width > height ? width * 0.15 : height * 0.15;
   const part = radiusBase / 3;
-  const speed = radiusBase * 0.002;
+  const speed = radiusBase * 0.0023;
   let radius = radiusBase;
   let acc = true;
 
