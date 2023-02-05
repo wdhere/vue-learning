@@ -13,7 +13,6 @@ let sketch = function (p) {
 
   p.setup = function () {
     p.createCanvas(width, height);
-    p.pixelDensity(1);
     p.strokeWeight(2);
     p.stroke(255);
     p.smooth();
