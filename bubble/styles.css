@@ -36,6 +36,7 @@ p {
     font-size: 4vw;
   }
   canvas {
+    margin-top: 50px;
     margin-bottom: 100px;
   }
 }
