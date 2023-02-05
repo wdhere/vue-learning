@@ -14,7 +14,7 @@ body {
 }
 
 p {
-  width: 60vw;
+  width: 80vw;
   position: fixed;
   bottom: 10vh;
   font-family: "Noto Serif SC", serif;
@@ -33,6 +33,6 @@ p {
 @media (orientation: portrait) {
   p {
     bottom: 15vh;
-    font-size: 3vw;
+    font-size: 4vw;
   }
 }
