@@ -1,4 +1,4 @@
-// alert("width: " + window.innerWidth + " height: " + window.innerHeight);
+alert("width: " + window.innerWidth + " height: " + window.innerHeight);
 
 let sketch = function (p) {
   let ox = p.random(10000);
